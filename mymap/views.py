@@ -22,9 +22,11 @@ from .forms import handle_uploaded_file
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
+        files = request.FILES.getlist('file_field')
         if form.is_valid():
-            file = handle_uploaded_file(request.FILES['file'])
-            return render(request, 'mymap/success.html', {'file' : file})
+            for f in files:
+                handle_uploaded_file(f)
+        return render(request, 'mymap/success.html', {'form': form})
     else:
         form = UploadFileForm()
     return render(request, 'mymap/upload.html', {'form': form})
