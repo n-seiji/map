@@ -1,0 +1,43 @@
+.blurBg{
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  line-height: 10px;
+  background: url('images/back.png') no-repeat;
+  background-size: cover;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+.blurBg:before{
+  content: '';
+  background: inherit;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  z-index: -1;
+}
+
+.center{/*aタグを画像の真ん中に*/
+  text-align:center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%,-50%);
+  -webkit-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
+  /*以下装飾*/
+  margin:0;/*余計な隙間を除く*/
+  font-size: 20px;/*文字サイズ*/
+  border: solid white 2px; /*線で囲う*/
+  padding: 7px;/*文字と線の間の余白*/
+  color: black;/*文字色*/
+  text-decoration: none;/*下線を表示させない*/
+  }
