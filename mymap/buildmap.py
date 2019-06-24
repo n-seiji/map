@@ -3,12 +3,15 @@ import re
 import glob
 import folium
 from os.path import expanduser
+from mysite.settings import BASE_DIR
 #Downloadsまでのパス取得
-def buildmap (request):
-    downloads = expanduser("~/Downloads")
+def buildmap():
+    #ownloads = expanduser("~/Downloads")
+    data_path = BASE_DIR + '/mymap/upload/*.gpx'
+    map_path = BASE_DIR + '/mymap/templates/mymap'
 ###後で変更
 #gpxファイルを取得
-    files = glob.glob("/Users/seiji/program/strava/map/map_test/*.gpx")
+    files = glob.glob(data_path)
 
 #パターンの定義
     pattern_ido = 'lat="[0-9]+.[0-9]*"'
@@ -44,9 +47,9 @@ def buildmap (request):
     test_data.close()
 ##応急処置
 #ファイルの作成
-    f = open(os.path.join(downloads, 'map.html'),'a')
+    f = open(os.path.join(map_path, 'map.html'),'a')
 ###どうにか追記か読み込んで保存したい
-    osm.save(os.path.join(downloads, 'map.html'))
+    osm.save(os.path.join(map_path, 'map.html'))
     f.close()
     osm
 
